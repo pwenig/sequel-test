@@ -19,12 +19,21 @@ describe TasksRepo do
      repo = TasksRepo.new(db)
     repo.create({:name => "Wash Laundry"})
     repo.create({:name => "Wash Dishes"})
-    expected_taks = [
+    expected_tasks = [
       {:id => 1, :name => "Wash Laundry"},
       {:id => 2, :name => "Wash Dishes"}
     ]
-    expect(repo.all).to eq expected_taks
+    expect(repo.all).to eq expected_tasks
   end
 
+  it "allows for finding a task by id" do
+    repo = TasksRepo.new(db)
+    repo.create({:name => "Wash Laundry"})
+    repo.create({:name => "Wash Dishes"})
+    expected_tasks = [
+      {:id => 1, :name => "Wash Laundry"},
+    ]
+    expect(repo.find(1)).to eq expected_tasks
+  end
 
   end

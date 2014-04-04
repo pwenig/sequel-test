@@ -9,6 +9,10 @@ class TasksRepo
     @tasks_table.insert(attributes)
   end
 
+  def find(id)
+    @tasks_table.where(:id => 1).to_a
+  end
+
   def all
     @tasks_table.to_a
   end

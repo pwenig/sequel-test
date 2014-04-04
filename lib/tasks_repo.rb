@@ -2,18 +2,15 @@ require 'sequel'
 class TasksRepo
 
   def initialize(db)
-    @db = db
+    @tasks_table = db[:tasks]
   end
 
-  def insert(task)
-    @db
-    tasks = @db[:tasks]
-    tasks.insert(task)
+  def create(attributes)
+    @tasks_table.insert(attributes)
   end
 
-  def select_all
-    @db
-    tasks = @db[:tasks]
-    tasks.to_a
+  def all
+    @tasks_table.to_a
   end
+
 end

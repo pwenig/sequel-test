@@ -36,4 +36,14 @@ describe TasksRepo do
     expect(repo.find(1)).to eq expected_tasks
   end
 
+  it "allows for deleting a task" do
+    repo = TasksRepo.new(db)
+    repo.create({:name => "Wash Laundry"})
+    repo.create({:name => "Wash Dishes"})
+    repo.delete(1)
+    expected_tasks = [
+      {:id => 2, :name => "Wash Dishes"},
+    ]
+    expect(repo.all).to eq expected_tasks
+  end
   end

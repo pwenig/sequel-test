@@ -13,6 +13,10 @@ class TasksRepo
     @tasks_table.where(:id => 1).to_a
   end
 
+  def delete(id)
+    @tasks_table.where(:id => id).delete
+  end
+
   def all
     @tasks_table.to_a
   end
